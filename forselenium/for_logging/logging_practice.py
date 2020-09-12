@@ -1,6 +1,7 @@
 import logging
 import sys
 
+
 if __name__ == '__main__':
     # - 基本の使い方
     logger1 = logging.getLogger('Log1')
@@ -54,8 +55,11 @@ if __name__ == '__main__':
     logger4.removeHandler(logger4.handlers[0])
     hndl = logging.StreamHandler(stream=sys.stdout)
     logger4.addHandler(hndl)
+    import time
+    time.sleep(1)  # 出力待ちのためのSleep
     logger4.info('引数で sys.stdout を指定してやれば白文字で出力されるはず.')
     logger4.info('ただし出力Streamが変わるので、出力が同期されない.')
+    time.sleep(1)
     logger4.removeHandler(logger4.handlers[0])
     logger4.addHandler(logging.StreamHandler())
     logger4.info('他に使いそうなHandlerとしてはFileHandlerとNullHandlerがある.')
@@ -71,3 +75,8 @@ if __name__ == '__main__':
     # )
 
     # - logの色
+    logger4.info('------------')
+    logger4.info('下記URL C0oo1D の回答にあるスニペットを参照.')
+    logger4.info('https://xsnippet.org/359377/')
+    logger4.info('\033[33m仕組みとしては文字色用の制御コードをStringに付与して実現する\033[0m')
+    logger4.info('------------')
